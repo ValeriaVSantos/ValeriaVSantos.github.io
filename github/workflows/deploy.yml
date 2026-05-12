@@ -1,4 +1,0 @@
-export default defineConfig({
-  plugins: [react()],
-  base: '/',  // ← troca pelo nome real
-})

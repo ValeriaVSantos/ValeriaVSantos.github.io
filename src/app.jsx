@@ -1,7 +1,6 @@
 // Main app sections: about, news, pubs, projects, experience, contact
 import React, { useState as sUseState, useEffect as sUseEffect, useRef as sUseRef, useMemo as sUseMemo } from 'react'
 import NeuralHero from './hero.jsx'
-import CalibrationScatter from './viz.jsx'
 import { SITE } from './data.js'
 
 // Scroll reveal hook
@@ -58,20 +57,21 @@ function HeroText() {
       <Reveal delay={1}>
         <h1>
           Valéria<br />
-          Vieira <span className="italic accent">Santos</span>
+          Vieira dos <span className="italic accent">Santos</span>
         </h1>
       </Reveal>
       <Reveal delay={2}>
         <p className="lead">
-          Working on how language models <em style={{ fontStyle: 'italic', color: 'var(--violet)' }}>hesitate</em>,
-          {' '}hallucinate, and are held accountable.
+          I build evidence-based evaluation frameworks for conversational AI, with a focus on
+          {' '}<em style={{ fontStyle: 'italic', color: 'var(--violet)' }}>pragmatic uncertainty</em>,
+          {' '}calibration, and Brazilian Portuguese.
         </p>
       </Reveal>
       <Reveal delay={3}>
         <div className="hero-meta">
           <div className="row"><span className="label">// role</span><span className="val">Ph.D. Candidate · Linguistics</span></div>
           <div className="row"><span className="label">// at</span><span className="val">UFSCar — Federal University of São Carlos</span></div>
-          <div className="row"><span className="label">// group</span><span className="val">LeGOS · Advised by Prof. Dr. Oto Araújo do Vale</span></div>
+          <div className="row"><span className="label">// advisor</span><span className="val">Prof. Dr. Oto Araújo Vale</span></div>
           <div className="row"><span className="label">// based</span><span className="val">São Paulo, BR · 22.0184° S, 47.8908° W</span></div>
         </div>
       </Reveal>
@@ -79,7 +79,7 @@ function HeroText() {
         <div className="hero-cta">
           <a className="btn btn-primary" href="#research">View research →</a>
           <a className="btn btn-ghost" href="https://drive.google.com/file/d/1OMydXgdJ0B8nZa3q806-DJ9Qxu6qW_z9/view?usp=sharing" target="_blank" rel="noopener">Download CV ↗</a>
-          <a className="btn btn-ghost" href="mailto:valeriavsantos93@gmail.com">Get in touch</a>
+          <a className="btn btn-ghost" href="mailto:valeriavieira@estudante.ufscar.br">Get in touch</a>
         </div>
       </Reveal>
     </div>);
@@ -101,7 +101,7 @@ function Portrait() {
         </div>
         <div className="portrait-badge">
           <span className="pulse"></span>
-          <span>Open to research visits &amp; collaborations · 2026–27</span>
+          <span>Open to AI evaluation, NLP &amp; research collaborations</span>
         </div>
       </div>
     </Reveal>);
@@ -126,17 +126,16 @@ function About() {
             <div className="about-prose">
               <p>
                 I'm a Ph.D. candidate in Linguistics at the <strong>Federal University of São Carlos (UFSCar)</strong>,
-                advised by Prof. Dr. Oto Araújo do Vale. My dissertation builds a contrastive benchmark on the
-                Roda Viva Corpus to audit overconfidence in LLMs — piloted on <strong>Llama-3.1-8B-Instruct</strong>,
-                with GPT-4 and Sabiá-2 planned for the full dissertation — correlating the suppression of
-                pragmatic hesitation markers with semantic hallucination, measured via <strong>Expected Calibration
-                Error</strong> and <strong>semantic entropy</strong>.
+                advised by Prof. Dr. Oto Araújo Vale. My research examines whether language-model confidence
+                reflects pragmatic uncertainty in spontaneous Brazilian Portuguese. I combine linguistic annotation,
+                human evaluation, calibration analysis, and reproducible experiments.
               </p>
               <p>
-                Before the Ph.D., I spent six years leading conversational-AI programs in industry — most recently
-                as <strong>AI Project Manager at Serasa Experian</strong>, previously as Conversational Intelligence
-                Coordinator at <strong>Blip</strong> (clients including Netflix, Claro, Globoplay), and as founder of
-                Langue, a chatbot/voicebot studio. In 2025 I held a research stay at the University of West Bohemia.
+                Before the Ph.D., I spent seven years working with conversational AI in industry. At
+                <strong> Serasa Experian</strong>, I progressed from Digital Channels Manager to AI Projects
+                Specialist II. I previously worked as a Conversational Intelligence Coordinator and Chapter Lead
+                at <strong>Blip</strong>, and founded Langue, a chatbot and voicebot studio. In 2025, I completed a
+                research internship at the University of West Bohemia.
               </p>
               <p>
                 I care about bridging linguistic methodology with the messy reality of production NLP.
@@ -153,7 +152,7 @@ function About() {
                 ['Computational pragmatics', 0.92],
                 ['Prompt engineering & evaluation', 0.85],
                 ['Conversational AI & dialogue systems', 0.78],
-                ['Explainable AI (XAI) for social NLP', 0.68],
+                ['Human evaluation & annotation', 0.88],
                 ['NLP for Brazilian Portuguese', 0.95]].
                 map(([label, w]) =>
                 <div key={label} className="interest-row">
@@ -181,19 +180,36 @@ function Research() {
               <div className="section-eyebrow">002 · Research focus</div>
             </Reveal>
             <Reveal delay={1}>
-              <h2 className="section-title">A scatter of <em>bluffs</em>, hedges, and well-placed silences.</h2>
+              <h2 className="section-title">The model tracked <em>length</em> more than uncertainty.</h2>
             </Reveal>
           </div>
           <Reveal delay={2}>
-            <p className="section-sub">
-              Each point is a model utterance from a contrastive run on the Roda Viva Corpus.
-              X-axis: how confident the model reports being. Y-axis: whether it was right.
-              The interesting region is the bottom-right — where models <em>sound</em> certain and are wrong.
-            </p>
+            <p className="section-sub">A published pilot study testing whether LLM confidence responds to the
+              pragmatic signals people use when they are uncertain.</p>
           </Reveal>
         </div>
         <Reveal delay={1}>
-          <CalibrationScatter />
+          <div className="evidence-grid">
+            <div className="card evidence-card">
+              <span className="evidence-value">344</span>
+              <span className="evidence-label">contrastive turns</span>
+              <p>Faithful and sanitized transcripts from three Roda Viva interviews.</p>
+            </div>
+            <div className="card evidence-card">
+              <span className="evidence-value">β = +14.47</span>
+              <span className="evidence-label">turn length · p &lt; .001</span>
+              <p>The strongest predictor of model confidence in the multivariate analysis.</p>
+            </div>
+            <div className="card evidence-card">
+              <span className="evidence-value">−3.09 / −0.97</span>
+              <span className="evidence-label">disfluencies / lexical hedges</span>
+              <p>Smaller effects that did not reach statistical significance.</p>
+            </div>
+          </div>
+          <div className="evidence-actions">
+            <a className="btn btn-primary" href="https://aclanthology.org/2026.codi-1.5/" target="_blank" rel="noopener">Read the paper ↗</a>
+            <a className="btn btn-ghost" href="https://github.com/ValeriaVSantos/uncertainty-signature-audit" target="_blank" rel="noopener">Inspect code and data ↗</a>
+          </div>
         </Reveal>
       </div>
     </section>);
@@ -372,77 +388,20 @@ function Projects() {
 
 }
 
-// ---------- Live feed ----------
-function LiveFeed() {
-  const [now, setNow] = sUseState(Date.now());
-  sUseEffect(() => {const id = setInterval(() => setNow(Date.now()), 30000);return () => clearInterval(id);}, []);
-
-  return (
-    <section id="feed">
-      <div className="container">
-        <Reveal>
-          <div className="section-eyebrow">007 · Live feed</div>
-        </Reveal>
-        <Reveal delay={1}>
-          <h2 className="section-title">Recent <em>activity</em>.</h2>
-        </Reveal>
-        <div className="feed-grid" style={{ marginTop: 32 }}>
-          <Reveal delay={1}>
-            <div className="card feed">
-              <div className="feed-head">
-                <div className="feed-title"><span className="live-dot"></span>git activity</div>
-                <div className="feed-source">github.com/ValeriaVSantos</div>
-              </div>
-              <div className="feed-list">
-                {SITE.github.map((c) =>
-                <a key={c.sha} className="feed-item" href={`https://github.com/ValeriaVSantos/${c.repo}`} target="_blank" rel="noopener" style={{ textDecoration: 'none', color: 'inherit' }}>
-                    <div className="feed-sha">{c.sha}</div>
-                    <div className="feed-msg"><span className="repo">{c.repo}/</span>{c.msg}</div>
-                    <div className="feed-time">{c.time}</div>
-                  </a>
-                )}
-              </div>
-            </div>
-          </Reveal>
-          <Reveal delay={2}>
-            <div className="card feed">
-              <div className="feed-head">
-                <div className="feed-title"><span className="live-dot"></span>papers & venues</div>
-                <div className="feed-source">ACL · HUMIC · LPKM · Linguasagem</div>
-              </div>
-              <div className="feed-list">
-                {SITE.papers.map((p, i) =>
-                <div key={i} className="feed-item">
-                    <div className="feed-sha" style={{ color: p.status === 'accepted' ? 'var(--violet)' : 'var(--blue)' }}>
-                      {p.status === 'accepted' ? '✓ ACC' : '✓ PUB'}
-                    </div>
-                    <div className="feed-msg"><span className="repo">{p.venue}/</span>{p.title}</div>
-                    <div className="feed-time">{p.when}</div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </div>
-    </section>);
-
-}
-
 // ---------- Experience & Education ----------
 function Experience() {
   const xp = [
-  { when: '2022 – 2025', role: 'AI Project Manager · CX Manager', org: '<em>Serasa Experian</em> · São Paulo', desc: 'Led digital-transformation programs that shifted customer service from 80% voice to 70% digital channels and reached a 4.7 CSAT; managed design and rollout of large-scale conversational-AI assistants.' },
-  { when: '2021 – 2022', role: 'Conversational Intelligence Coordinator', org: '<em>Blip</em> · Belo Horizonte', desc: 'Led multidisciplinary squads building AI agents for Netflix, Claro, and Globoplay; owned linguistic data curation, intent/entity design, and validation of training corpora.' },
+  { when: 'Aug 2022 – Aug 2025', role: 'Digital Channels Manager → AI Projects Specialist II', org: '<em>Serasa Experian</em> · São Paulo', desc: 'Led conversational-AI and digital-transformation initiatives in a regulated financial-services environment, coordinating multidisciplinary teams and translating business, linguistic, and technical requirements into deployed solutions.' },
+  { when: 'Aug 2021 – Aug 2022', role: 'Conversational Intelligence Coordinator · Chapter Lead', org: '<em>Blip</em> · Brazil', desc: 'Led multidisciplinary squads developing conversational systems and established shared practices for linguistic data curation, corpus validation, and NLP quality.' },
   { when: '2018 – 2021', role: 'Founder · Conversational AI Specialist', org: '<em>Langue</em> · São Carlos', desc: 'Built bespoke chatbot and voicebot solutions for SMEs end-to-end — from discovery to deployment and post-launch performance analysis.' },
-  { when: 'Jan – Apr 2025', role: 'International Research Intern', org: '<em>University of West Bohemia</em> · Czechia', desc: 'Prompt-engineering research evaluating LLM accuracy on specialized engineering tasks; published with M. Malaga.' }];
+  { when: 'Jan – Apr 2025', role: 'Visiting Research Intern', org: '<em>University of West Bohemia</em> · Czech Republic', desc: 'Conducted research on prompt engineering and LLM evaluation for specialized engineering tasks and co-authored a peer-reviewed conference paper.' }];
 
   const edu = [
   { when: '2025 – present', role: 'Ph.D. in Linguistics', org: '<em>Federal University of São Carlos (UFSCar)</em>', desc: 'Advisor: Prof. Dr. Oto Araújo do Vale. Dissertation on LLM calibration via pragmatic hesitation markers.' },
-  { when: '2026 – present', role: 'Postgraduate Coursework · Applied Statistics', org: '<em>Anhanguera</em>', desc: 'Quantitative methods and statistical modeling for NLP.' },
-  { when: '2023 – 2025', role: 'M.A. in Linguistics', org: '<em>UFSCar</em>', desc: 'GPA 3.8 / 4.0. Thesis: <em>Hesitation as a Pragmatic Marker in Human–Machine Dialogue</em>.' },
-  { when: '2019 – 2020', role: 'MBA · Business Management', org: '<em>University of São Paulo (USP/ESALQ)</em>', desc: 'Management, finance, and quantitative methods.' },
-  { when: '2015 – 2018', role: 'B.A. in Linguistics', org: '<em>UFSCar</em>', desc: 'Foundations in syntax, semantics, and discourse analysis.' }];
+  { when: '2026', role: 'Specialization · Applied Statistics', org: '<em>Anhanguera</em>', desc: 'Quantitative methods and statistical modeling.' },
+  { when: '2023 – 2025', role: 'M.A. in Linguistics', org: '<em>UFSCar</em>', desc: 'Advisor: Prof. Dr. Joceli Catarina Stassi-Sé. Thesis: <em>O papel da hesitação na interação humano-máquina: uma análise no atendimento via chat</em>.' },
+  { when: '2020 – 2021', role: 'MBA · Business Management', org: '<em>University of São Paulo (USP/ESALQ)</em>', desc: 'Business management, finance, and quantitative methods.' },
+  { when: '2015 – 2019', role: 'B.A. in Linguistics', org: '<em>UFSCar</em>', desc: 'Training in language analysis, semantics, pragmatics, and discourse.' }];
 
 
   return (
@@ -507,7 +466,7 @@ function Contact() {
             any of the corners where linguistics meets production NLP — I'd love to hear from you.</p>
         </Reveal>
         <Reveal delay={2}>
-          <a className="contact-email" href="mailto:valeriavsantos93@gmail.com">
+          <a className="contact-email" href="mailto:valeriavieira@estudante.ufscar.br">
             valeriavsantos93@gmail.com<span className="arrow">→</span>
           </a>
         </Reveal>
@@ -515,10 +474,9 @@ function Contact() {
           <div className="contact-socials">
             <a className="social" href="https://drive.google.com/file/d/1OMydXgdJ0B8nZa3q806-DJ9Qxu6qW_z9/view?usp=sharing" target="_blank" rel="noopener">CV ↗</a>
             <a className="social" href="https://orcid.org/0009-0006-0023-6736" target="_blank" rel="noopener">ORCID</a>
-            <a className="social" href="https://scholar.google.com/citations?user=REPLACE_ME" target="_blank" rel="noopener">Google Scholar</a>
+            <a className="social" href="https://scholar.google.com.br/citations?user=T23u398AAAAJ&amp;hl=pt-BR" target="_blank" rel="noopener">Google Scholar</a>
             <a className="social" href="https://github.com/ValeriaVSantos" target="_blank" rel="noopener">GitHub</a>
             <a className="social" href="https://www.linkedin.com/in/valeriavieira-/" target="_blank" rel="noopener">LinkedIn</a>
-            <a className="social" href="https://buscatextual.cnpq.br/buscatextual/visualizacv.do" target="_blank" rel="noopener">Lattes</a>
           </div>
         </Reveal>
       </div>
@@ -540,8 +498,7 @@ function Nav() {
           <a href="#publications">publications</a>
           <a href="#projects">projects</a>
           <a href="#experience">cv</a>
-          <a href="./research-statement.html">statement</a>
-          <a href="./humic.html" style={{ color: 'var(--violet)' }}>humic ↗</a>
+          <a href="https://github.com/ValeriaVSantos" target="_blank" rel="noopener">github ↗</a>
         </div>
         <a className="nav-cta" href="https://drive.google.com/file/d/1OMydXgdJ0B8nZa3q806-DJ9Qxu6qW_z9/view?usp=sharing" target="_blank" rel="noopener">CV ↗</a>
       </div>

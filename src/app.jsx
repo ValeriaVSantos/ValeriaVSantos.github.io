@@ -408,7 +408,7 @@ function Experience() {
     <section id="experience">
       <div className="container">
         <Reveal>
-          <div className="section-eyebrow">008 · Experience & education</div>
+          <div className="section-eyebrow">007 · Experience & education</div>
         </Reveal>
         <Reveal delay={1}>
           <h2 className="section-title">A path through <em>industry</em> and the academy.</h2>
@@ -456,7 +456,7 @@ function Contact() {
     <section id="contact" className="contact">
       <div className="container">
         <Reveal>
-          <div className="section-eyebrow" style={{ justifyContent: 'center', display: 'inline-flex' }}>009 · Get in touch</div>
+          <div className="section-eyebrow" style={{ justifyContent: 'center', display: 'inline-flex' }}>008 · Get in touch</div>
         </Reveal>
         <Reveal delay={1}>
           <h2>Let's <em>talk</em> about uncertainty.</h2>
@@ -467,7 +467,7 @@ function Contact() {
         </Reveal>
         <Reveal delay={2}>
           <a className="contact-email" href="mailto:valeriavieira@estudante.ufscar.br">
-            valeriavsantos93@gmail.com<span className="arrow">→</span>
+            valeriavieira@estudante.ufscar.br<span className="arrow">→</span>
           </a>
         </Reveal>
         <Reveal delay={3}>
@@ -511,7 +511,7 @@ function Footer() {
   return (
     <footer className="footer container">
       <div className="signature">
-        <span>© 2026 Valéria V. Santos</span>
+        <span>© 2026 Valéria Vieira dos Santos</span>
         <span>—</span>
         <span>São Paulo · Brazil</span>
       </div>
@@ -543,7 +543,6 @@ function App() {
         <Publications />
         <Talks />
         <Projects />
-        <LiveFeed />
         <Experience />
         <Contact />
         <Footer />

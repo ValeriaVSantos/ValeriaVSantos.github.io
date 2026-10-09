@@ -33,6 +33,119 @@ html, body {
 }
 ::selection { background: rgba(167, 139, 250, 0.35); color: #fff; }
 
+/* Evidence snapshot: verified results from the published CODI-CRAC study. */
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.evidence-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 230px;
+  padding: 28px;
+}
+.evidence-value {
+  color: var(--violet);
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(34px, 4vw, 54px);
+  line-height: 1;
+}
+.evidence-label {
+  margin-top: 12px;
+  color: var(--blue);
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.evidence-card p {
+  margin: auto 0 0;
+  color: var(--text-2);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.evidence-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* Industry outcomes: recruiter-facing proof before the research portfolio. */
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+.impact-card {
+  min-height: 215px;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+}
+.impact-value {
+  color: var(--violet);
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1;
+}
+.impact-label {
+  margin-top: 12px;
+  color: var(--blue);
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  line-height: 1.45;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.impact-card p {
+  margin: auto 0 0;
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.55;
+}
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.case-card { height: 100%; padding: 30px; }
+.case-kicker {
+  color: var(--violet);
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.case-card h3 {
+  margin: 12px 0 14px;
+  color: var(--text);
+  font-size: 24px;
+  line-height: 1.15;
+  letter-spacing: -.02em;
+}
+.case-card > p,
+.case-card li {
+  color: var(--text-2);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.case-card ul { margin: 22px 0 0; padding-left: 18px; }
+.case-card li { margin-bottom: 9px; padding-left: 4px; }
+.case-card li::marker { color: var(--blue); }
+@media (max-width: 980px) {
+  .impact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+  .impact-grid, .case-grid { grid-template-columns: 1fr; }
+  .impact-card { min-height: 180px; }
+}
+@media (max-width: 820px) {
+  .evidence-grid { grid-template-columns: 1fr; }
+  .evidence-card { min-height: 190px; }
+}
+
 /* Ambient layer */
 .bg-ambient {
   position: fixed; inset: 0;
@@ -847,6 +960,8 @@ section { position: relative; padding: 100px 0; }
   grid-template-columns: 1fr 1fr;
   gap: 0;
 }
+.exp-grid-single { grid-template-columns: 1fr; }
+.exp-grid-single .exp-col { max-width: 900px; }
 @media (max-width: 920px) { .exp-grid { grid-template-columns: 1fr; } }
 .exp-col h4 {
   font-family: 'Geist Mono', monospace;
@@ -891,6 +1006,7 @@ section { position: relative; padding: 100px 0; }
 @media (min-width: 921px) {
   .exp-grid > :first-child { padding-right: 32px; border-right: 1px solid var(--line); }
   .exp-grid > :last-child { padding-left: 32px; }
+  .exp-grid-single > :first-child { padding-right: 0; border-right: 0; }
 }
 
 /* ---------- Contact ---------- */
@@ -993,47 +1109,3 @@ section { position: relative; padding: 100px 0; }
 .axis-tick-label { fill: var(--text-3); font-family: 'Geist Mono', monospace; font-size: 9px; }
 .grid-line { stroke: var(--line); stroke-dasharray: 2 4; }
 .diag-line { stroke: rgba(168, 145, 255, 0.18); stroke-dasharray: 3 4; }
-
-
-/* Evidence snapshot: verified results from the published CODI-CRAC study. */
-.evidence-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
-.evidence-card {
-  display: flex;
-  flex-direction: column;
-  min-height: 230px;
-  padding: 28px;
-}
-.evidence-value {
-  color: var(--violet);
-  font-family: 'Instrument Serif', serif;
-  font-size: clamp(34px, 4vw, 54px);
-  line-height: 1;
-}
-.evidence-label {
-  margin-top: 12px;
-  color: var(--blue);
-  font-family: 'Geist Mono', monospace;
-  font-size: 11px;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-.evidence-card p {
-  margin: auto 0 0;
-  color: var(--text-2);
-  font-size: 14px;
-  line-height: 1.6;
-}
-.evidence-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 24px;
-}
-@media (max-width: 820px) {
-  .evidence-grid { grid-template-columns: 1fr; }
-  .evidence-card { min-height: 190px; }
-}
